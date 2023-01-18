@@ -49,7 +49,8 @@ function belblog_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'main-menu' => esc_html__( 'Primary Menu', 'belblog' ),
+			'main-menu'   => esc_html__( 'Primary Menu', 'belblog' ),
+			'mobile-menu' => esc_html__( 'Mobile Menu', 'belblog' ),
 		)
 	);
 
@@ -99,6 +100,8 @@ function belblog_setup() {
 			'flex-height' => true,
 		)
 	);
+	// Remove block widget
+	remove_theme_support( 'widgets-block-editor' );
 }
 
 add_action( 'after_setup_theme', 'belblog_setup' );
@@ -124,13 +127,13 @@ add_action( 'after_setup_theme', 'belblog_content_width', 0 );
 function belblog_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'belblog' ),
-			'id'            => 'sidebar',
+			'name'          => esc_html__( 'Main Sidebar', 'belblog' ),
+			'id'            => 'main-sidebar',
 			'description'   => esc_html__( 'Add widgets here.', 'belblog' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<div class="widget-title sidebar-title">',
+			'after_title'   => '</div>',
 		)
 	);
 }
@@ -142,6 +145,8 @@ add_action( 'widgets_init', 'belblog_widgets_init' );
  * Enqueue scripts and styles.
  */
 function belblog_scripts() {
+	wp_enqueue_style( 'belblog-roboto-font', '//fonts.googleapis.com/css?family=Roboto:100i,300,300i,400,400i,500,500i,700,700i,900,900i' );
+	wp_enqueue_style( 'belblog-lora-font', '//fonts.googleapis.com/css?family=Lora:400,400i,700,700i' );
 	wp_enqueue_style( 'belblog-font-awesome-css', get_template_directory_uri() . '/css/font-awesome.min.css', array(), _S_VERSION, 'all' );
 	wp_enqueue_style( 'belblog-bootstrap-css', get_template_directory_uri() . '/css/bootstrap.min.css', array(), _S_VERSION, 'all' );
 	wp_enqueue_style( 'belblog-owl-css', get_template_directory_uri() . '/css/owl.css', array(), _S_VERSION, 'all' );
@@ -163,4 +168,6 @@ add_action( 'wp_enqueue_scripts', 'belblog_scripts' );
 
 
 require get_template_directory() . '/inc/template-functions.php';
+require get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
+require get_template_directory() . '/inc/tgm/tgm-active.php';
 

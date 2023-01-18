@@ -788,7 +788,7 @@ h6 a:hover{
 }
 
 .hidden-bar .mCSB_inside > .mCSB_container{
-  margin-right:0px; 
+  margin-right:0px;
 }
 
 .hidden-bar.right-align {
@@ -796,7 +796,7 @@ h6 a:hover{
 }
 
 .hidden-bar.right-align.visible-sidebar{
-  right:0px;  
+  right:0px;
 }
 
 .hidden-bar.right-align .hidden-bar-closer {
@@ -996,11 +996,11 @@ h6 a:hover{
 .video-gallery .overlay-gallery .icon-holder{
   display: table;
   height: 100%;
-  width: 100%;    
+  width: 100%;
 }
 .video-gallery .overlay-gallery .icon-holder .icon{
   display: table-cell;
-  vertical-align: middle; 
+  vertical-align: middle;
 }
 .video-gallery .overlay-gallery .icon-holder .icon a{
   position: relative;
@@ -1244,7 +1244,7 @@ i.fa{
   background: #ffffff;
   border-radius: 50%;
   transition: all 500ms ease;
-} 
+}
 .nav-style-one .owl-nav .owl-prev:hover,
 .nav-style-one .owl-nav .owl-next:hover{
   background: #dfd6d3;
@@ -1651,7 +1651,7 @@ textarea:focus{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-two
