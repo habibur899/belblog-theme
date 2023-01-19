@@ -1510,6 +1510,7 @@ i.fa {
     width: 100%;
     transition: all 500ms ease;
     transform: scale(1.0);
+    height: auto;
 }
 
 .sidebar-post .single-post:hover .img-box img {
@@ -1635,6 +1636,7 @@ textarea:focus {
     position: relative;
     overflow: hidden;
     margin-bottom: 20px;
+    height: 100px;
 }
 
 .sidebar-img-content .single-item .img-box {
