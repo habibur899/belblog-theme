@@ -3,133 +3,9 @@
 get_header();
 ?>
 
-    <section class="slider-style-six">
-        <div class="container">
-            <div class="row">
-				<?php
-				$args  = array(
-					'post_type'      => 'post',
-					'posts_per_page' => 3
-				);
-				$query = new WP_Query( $args );
-				if ( have_posts() ) {
-				while ( $query->have_posts() ) {
-				$query->the_post();
-				if ( 1 > $query->current_post ) {
-				?>
-                <div class="col-md-8 col-sm-12 col-xs-12 first-column">
-                    <div class="single-item">
-                        <div class="single-item-overlay">
-                            <div class="img-box">
-								<?php the_post_thumbnail(); ?>
-                                <div class="overlay">
-                                    <div class="inner-box">
-                                        <div class="content blog-content-one">
-                                            <div class="meta-text"><?php the_category(); ?></div>
-                                            <div class="title"><h3><a
-                                                            href="<?php the_permalink(); ?>"> <?php the_title() ?></a>
-                                                </h3></div>
-                                            <div class="date">
-                                                <span><?php echo esc_html__( 'On', 'belblog' ) ?></span> <?php echo esc_attr( get_the_date() ) ?>
-                                                &nbsp;&nbsp;<i
-                                                        class="flaticon-circle"></i>&nbsp;&nbsp;<span><?php echo esc_html__( 'By', 'belblog' ) ?></span>
-												<?php the_author() ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12 col-xs-12 column">
-					<?php
-					}
-
-                    elseif ( 3 > $query->current_post ) {
-						?>
-
-                        <div class="single-item">
-                            <div class="single-item-overlay">
-                                <div class="img-box">
-									<?php the_post_thumbnail( 'medium' ); ?>
-                                    <div class="overlay">
-                                        <div class="inner-box">
-                                            <div class="content blog-content-one">
-                                                <div class="meta-text"><?php the_category(); ?></div>
-                                                <div class="title"><h3><a
-                                                                href="<?php the_permalink(); ?>"> <?php the_title() ?></a>
-                                                    </h3></div>
-                                                <div class="date">
-                                                    <span><?php echo esc_html__( 'On', 'belblog' ) ?></span> <?php echo esc_attr( get_the_date() ) ?>
-                                                    &nbsp;&nbsp;<i
-                                                            class="flaticon-circle"></i>&nbsp;&nbsp;<span><?php echo esc_html__( 'By', 'belblog' ) ?></span>
-													<?php the_author() ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-						<?php
-					}
-					}
-					}
-					wp_reset_query();
-					?>
-
-                </div>
-            </div>
-        </div>
-    </section>
 
 
-    <!-- carousel-style-one -->
-    <section class="carousel-style-one mar-bottom-100">
-        <div class="single-item-carousel-overlay owl-control-none">
-			<?php
-			$featured_args  = array(
-				'post_type'      => 'post',
-				'posts_per_page' => - 1,
-				'meta_key'       => 'featured_post',
-				'meta_value'     => true
-			);
-			$featured_query = new WP_Query( $featured_args );
-			if ( have_posts() ) {
-				while ( $featured_query->have_posts() ) {
-					$featured_query->the_post();
-					?>
-                    <div class="single-item">
-                        <div class="single-item-overlay">
-                            <div class="img-box">
-								<?php the_post_thumbnail('medium'); ?>
-                                <div class="overlay">
-                                    <div class="inner-box">
-                                        <div class="content blog-content-one">
-                                            <div class="meta-text"><?php the_category(); ?></div>
-                                            <div class="title"><h6><a
-                                                            href="<?php the_permalink(); ?>"><?php the_title() ?></a>
-                                                </h6></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-					<?php
-				}
-			}
-			wp_reset_query();
-			?>
 
-        </div>
-    </section>
-    <!-- carousel-style-one end -->
-
-
-    <!-- blog side -->
     <section class="blog-side blog-style-one blog-style-three">
         <div class="container">
             <div class="row">
@@ -541,7 +417,7 @@ get_header();
             </div>
         </div>
     </section>
-    <!-- blog side end -->
+
 
 <?php
 get_footer();
