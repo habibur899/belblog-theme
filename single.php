@@ -41,128 +41,53 @@ $author_id = $post->post_author;
                         <div class="single-authore">
                             <div class="authore-img">
 								<?php
+								$user = wp_get_current_user();
 								?>
-                                <figure><?php echo get_avatar( get_the_author_meta( 'id' ) );
-	                                ?></figure>
+                                <figure><img src="<?php echo esc_url( get_avatar_url( $user->ID ) ) ?>" alt="">
+                                </figure>
                             </div>
                             <div class="authore-title"><?php echo esc_attr( get_the_author_meta( 'display_name', $author_id ) ) ?>
                                 - <span><?php echo esc_html__( 'Author', 'belfast' ) ?></span></div>
-                            <div class="text"><p><?php echo esc_attr( get_the_author_meta( 'description', $author_id ) ) ?></p></div>
+                            <div class="text">
+                                <p><?php echo esc_attr( get_the_author_meta( 'description', $author_id ) ) ?></p>
+                            </div>
                             <ul class="social-link">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+								<?php
+								$author_socials = get_field( 'social', 'user_' . $author_id );
+								if ( $author_socials ) {
+									foreach ( $author_socials as $author_social ) {
+										?>
+
+                                        <li><a href="<?php echo esc_url( $author_social['social_url'] ) ?>"><i
+                                                        class="<?php echo esc_attr( $author_social['social_icon'] ) ?>"></i></a>
+                                        </li>
+										<?php
+									}
+								}
+								?>
                             </ul>
                         </div>
                         <div class="related-post centred">
-                            <div class="title-text-two">RELATED POSTS</div>
+                            <div class="title-text-two"><?php echo esc_html__( 'RELATED POSTS', 'belblog' ) ?></div>
                             <div class="carousel-style-four nav-style-none dots-style-one">
-                                <div class="carousel-style-one">
-                                    <figure><img src="images/news/2.jpg" alt=""></figure>
-                                    <div class="lower-content">
-                                        <div class="meta-text"><a href="#">Travel</a></div>
-                                        <div class="title"><h6><a href="post2.html">Love Boat soon will be making
-                                                    another run</a></h6></div>
+								<?php
+								$rel_posts = get_field( 'posts' );
+								foreach ( $rel_posts as $rel_post ) {
+									?>
+                                    <div class="carousel-style-one">
+                                        <figure><img src="<?php echo esc_url( get_the_post_thumbnail_url($rel_post->ID) ) ?>" alt="">
+                                        </figure>
+                                        <div class="lower-content">
+                                            <div class="meta-text"><?php the_category($rel_post->ID) ?>
+                                            </div>
+                                            <div class="title"><h6><a
+                                                            href="<?php the_permalink(); ?>"><?php echo get_the_title($rel_post->ID) ?></a>
+                                                </h6></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="carousel-style-one">
-                                    <figure><img src="images/news/3.jpg" alt=""></figure>
-                                    <div class="lower-content">
-                                        <div class="meta-text"><a href="#">Lifestyle</a></div>
-                                        <div class="title"><h6><a href="post2.html">Call him flipper flipper faster
-                                                    than
-                                                    lightning</a></h6></div>
-                                    </div>
-                                </div>
-                                <div class="carousel-style-one">
-                                    <figure><img src="images/news/4.jpg" alt=""></figure>
-                                    <div class="lower-content">
-                                        <div class="meta-text"><a href="#">Fashion</a></div>
-                                        <div class="title"><h6><a href="post2.html">East side to a deluxe apartment
-                                                    in
-                                                    the sky</a></h6></div>
-                                    </div>
-                                </div>
-                                <div class="carousel-style-one">
-                                    <figure><img src="images/news/2.jpg" alt=""></figure>
-                                    <div class="lower-content">
-                                        <div class="meta-text"><a href="#">Travel</a></div>
-                                        <div class="title"><h6><a href="post2.html">Love Boat soon will be making
-                                                    another run</a></h6></div>
-                                    </div>
-                                </div>
-                                <div class="carousel-style-one">
-                                    <figure><img src="images/news/3.jpg" alt=""></figure>
-                                    <div class="lower-content">
-                                        <div class="meta-text"><a href="#">Lifestyle</a></div>
-                                        <div class="title"><h6><a href="post2.html">Call him flipper flipper faster
-                                                    than
-                                                    lightning</a></h6></div>
-                                    </div>
-                                </div>
-                                <div class="carousel-style-one">
-                                    <figure><img src="images/news/4.jpg" alt=""></figure>
-                                    <div class="lower-content">
-                                        <div class="meta-text"><a href="#">Fashion</a></div>
-                                        <div class="title"><h6><a href="post2.html">East side to a deluxe apartment
-                                                    in
-                                                    the sky</a></h6></div>
-                                    </div>
-                                </div>
-                                <div class="carousel-style-one">
-                                    <figure><img src="images/news/2.jpg" alt=""></figure>
-                                    <div class="lower-content">
-                                        <div class="meta-text"><a href="#">Travel</a></div>
-                                        <div class="title"><h6><a href="post2.html">Love Boat soon will be making
-                                                    another run</a></h6></div>
-                                    </div>
-                                </div>
-                                <div class="carousel-style-one">
-                                    <figure><img src="images/news/3.jpg" alt=""></figure>
-                                    <div class="lower-content">
-                                        <div class="meta-text"><a href="#">Lifestyle</a></div>
-                                        <div class="title"><h6><a href="post2.html">Call him flipper flipper faster
-                                                    than
-                                                    lightning</a></h6></div>
-                                    </div>
-                                </div>
-                                <div class="carousel-style-one">
-                                    <figure><img src="images/news/4.jpg" alt=""></figure>
-                                    <div class="lower-content">
-                                        <div class="meta-text"><a href="#">Fashion</a></div>
-                                        <div class="title"><h6><a href="post2.html">East side to a deluxe apartment
-                                                    in
-                                                    the sky</a></h6></div>
-                                    </div>
-                                </div>
-                                <div class="carousel-style-one">
-                                    <figure><img src="images/news/2.jpg" alt=""></figure>
-                                    <div class="lower-content">
-                                        <div class="meta-text"><a href="#">Travel</a></div>
-                                        <div class="title"><h6><a href="post2.html">Love Boat soon will be making
-                                                    another run</a></h6></div>
-                                    </div>
-                                </div>
-                                <div class="carousel-style-one">
-                                    <figure><img src="images/news/3.jpg" alt=""></figure>
-                                    <div class="lower-content">
-                                        <div class="meta-text"><a href="#">Lifestyle</a></div>
-                                        <div class="title"><h6><a href="post2.html">Call him flipper flipper faster
-                                                    than
-                                                    lightning</a></h6></div>
-                                    </div>
-                                </div>
-                                <div class="carousel-style-one">
-                                    <figure><img src="images/news/4.jpg" alt=""></figure>
-                                    <div class="lower-content">
-                                        <div class="meta-text"><a href="#">Fashion</a></div>
-                                        <div class="title"><h6><a href="post2.html">East side to a deluxe apartment
-                                                    in
-                                                    the sky</a></h6></div>
-                                    </div>
-                                </div>
+								<?php } ?>
+
+
                             </div>
                         </div>
                         <div class="comment-area">
@@ -252,6 +177,8 @@ $author_id = $post->post_author;
                         </div>
                     </div>
                 </div>
+
+                ?>
 
 
 				<?php get_sidebar() ?>
