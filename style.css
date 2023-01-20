@@ -17,5 +17,46 @@ Use it to make something cool, have fun, and share what you've learned.
 
 */
 .current-menu-item a {
-    color: #f3a28b!important;
+    color: #f3a28b !important;
+}
+
+.comment-author.vcard img {
+    display: inline-block;
+    height: 70px;
+    width: 70px;
+    float: left;
+    margin-right: 15px;
+}
+
+.comment-author.vcard b.fn a {
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 26px;
+    color: #333333;
+}
+
+.comment-metadata a time {
+    text-transform: uppercase;
+}
+
+article.comment-body {
+    margin-bottom: 20px;
+}
+
+.reply {
+    text-align: right;
+}
+
+.reply a {
+    font-size: 15px;
+    line-height: 25px;
+    font-weight: 300;
+    color: #f3a28b;
+}
+
+.reply a:hover {
+    color: #999999;
+}
+ul.children {
+    margin-left: 75px;
 }
